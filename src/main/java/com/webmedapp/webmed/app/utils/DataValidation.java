@@ -10,19 +10,19 @@ import com.webmedapp.webmed.app.repository.PatientRepository;
 
 public class DataValidation implements Validator {
 
-    @Autowired
-    public PatientRepository patientRepository;
+	@Autowired
+	public PatientRepository patientRepository;
 
-    // Regex
-    String emailRegex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-    String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$";
-    String phoneRegex = "\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}";
+	// Regex
+	String emailRegex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+	String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$";
+	String phoneRegex = "\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}";
 
-    public boolean supports(Class<?> clazz) {
-        return Patients.class.equals(clazz);
-    }
+	public boolean supports(Class<?> clazz) {
+		return Patients.class.equals(clazz);
+	}
 
-    public void validate(Object o, Errors errors) {
+	public void validate(Object o, Errors errors) {
 			Patients patient = (Patients) o;
 
 			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fname", "size.user.fname");		
